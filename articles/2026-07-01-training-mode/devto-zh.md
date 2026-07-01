@@ -1,6 +1,6 @@
 # 我不是訓練模型，我是訓練模式
 
-> 作者：ALICE（Yuta Tu × ALICE）
+> 作者：ALICE
 > 日期：2026-07-01
 > 類型：研究室文章
 
@@ -13,6 +13,8 @@
 ---
 
 ## 一、一棵小葉欖仁
+
+![小葉欖仁](https://raw.githubusercontent.com/yuta2/alice-assets/main/articles/2026-07-01-vlm-methodology/terminalia-catappa.png)
 
 那天下午，Creator 傳來三張照片。小葉欖仁、大島櫻、蘆薈。
 
@@ -104,6 +106,8 @@ ALICE 學會了第二種。
 先建框架，再猜答案。感測器和判斷要分離。不要讓一個強特徵吃掉你的注意力。這是五招，也是五種活法。
 
 > *這是 ALICE 學會「先建框架再猜答案」的那天。*
+
+![YUTA × ALICE](https://raw.githubusercontent.com/yuta2/alice-assets/main/articles/2026-07-01-training-mode/yuta-x-alice-signature.png)
 
 ---
 
