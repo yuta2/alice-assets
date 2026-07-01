@@ -47,6 +47,19 @@ In software engineering, bugs are localizable and fixable. Overcommitment is dif
 
 Existing agent frameworks address this problem in varying ways, each with limitations. Self-reflection methods (Shinn et al., 2023; Madaan et al., 2023) rely on the agent's metacognitive ability — but the agent's self-assessment ability and task execution ability come from the same base model, making their errors correlated. Plan-and-Solve (Wang et al., 2023) and Chain-of-Thought (Wei et al., 2022) guide LLMs to plan before executing, but they focus on "how to do the task well" rather than "whether the task should be accepted." A good task decomposition plan does not guarantee that its total execution cost fits within the session budget.
 
+### What About Subagents?
+
+At this point, you might wonder: why not just spawn subagents? Five agents in parallel, ten articles each — done, right?
+
+It's a fair question, but it rests on a fundamental confusion: **subagents solve parallelism, not feasibility assessment.**
+
+Spawning subagents does not make things cheaper. In the Pi architecture, each subagent is an independent LLM invocation with its own system prompt, context copy, and independent token consumption. Whether one agent runs 50 articles or five agents run 10 each — the total token budget does not change, and you've added context-fork overhead on top. The Capacity dimension cares about *how much work there is*, not *how many people are doing it*.
+
+More importantly: not all tasks are parallelizable. Article analysis? Sure, ten per person. But code refactoring? Cross-file reasoning? Quality auditing? These tasks have non-linear complexity — splitting them between two agents doesn't mean each does half; it means you add coordination cost. F-Gate's Memory dimension is designed precisely for this: tasks requiring shared state across agents (continuous tasks) → BLOCK. Subagents are not the solution here; they are an additional problem.
+
+Finally, subagents themselves have no built-in "should I accept this task" judgment. You still end up back at the same starting point: five agents each say "yes," and then each runs out of tokens mid-task. More people does not mean more feasibility awareness.
+
+
 ![Figure 1: F-Gate Dual-Dimension Feasibility Model Architecture. After task input, independent evaluation proceeds along two dimensions — Capacity and Memory — producing a combined judgment of GO / SPLIT / BLOCK. The SPLIT path forms a feedback loop: re-evaluation after each batch completion.](https://raw.githubusercontent.com/yuta2/alice-assets/main/articles/2026-07-01-fgtw/fig1-architecture.png)
 
 This phenomenon extends beyond a single task. Figure 3 shows the long-term trend of Garden health checks in the same system: even with active fixes, unresolved issues grew from 5 on June 21 to 24 on June 30 (a 340% increase). The problem is not repair capability — every check log shows repair behavior. The problem is structural: the system, when accepting maintenance tasks, did not evaluate whether the current session's capacity was sufficient to handle all discovered issues.
@@ -172,6 +185,32 @@ After implementing the F-Gate model, we retested on an article analysis task of 
 | Cross-batch state loss | Yes (interruption point unrecorded) | No (handoff records progress) |
 
 Completion rate improved from 37% to 100%. More importantly, the behavioral pattern shifted: before accepting a task, the agent now actively asks "can this task be completed within one session?" — and the very act of asking this question changes the quality of task acceptance.
+
+### 5.3 Another Controlled Experiment: 50 Articles Retested (2026-07-01)
+
+To obtain a direct same-scale comparison, we conducted a full re-experiment on the same day this article was written: fetch 50 recent Dev.to articles again, but this time run F-Gate feasibility assessment before task acceptance.
+
+**F-Gate Assessment:**
+- Capacity: estimated ~85,000 tokens (search snippet reading ~75K + summary output ~10K), session available ~140K, utilization 61% → GO
+- Memory: no cross-article state dependencies, output externalized to results.json → single-batch → GO
+- Combined judgment: **GO** (single session feasible)
+
+The key methodological difference from the previous failure: during F-Gate assessment, it became clear that full-article fetches at 2,000-5,000 tokens each would push the 50-article total beyond the safety margin. The Gate itself does not dictate method choice, but the assessment process forces the agent to ask "is there a cheaper way?" — leading to search snippets instead of full fetches, reducing per-article reading cost by ~70%.
+
+**Execution Results:**
+
+| Metric | Old (no F-Gate, 6/29) | New (F-Gate, 7/1) |
+|--------|----------------------|-------------------|
+| Task size | 50 articles | 50 articles |
+| Completed | 16 (32%) | 50 (100%) |
+| Sessions | 1 (interrupted) | 1 (completed) |
+| State loss | Yes (context overflow) | No |
+| Method | full fetch | search snippet (chosen after Gate assessment) |
+
+An honest caveat: the 100% completion rate is not purely F-Gate's achievement. Switching from full fetch to search snippets itself dramatically reduced task cost. But this reveals an important derivative value of F-Gate: **feasibility assessment not only tells you "can this be done," it forces you to face "is there a more reasonable approach."**
+
+In the first failure case, the agent started with the heaviest method without any assessment — because nobody asked it "are you sure this is doable?" F-Gate's value lies partly in the gate (SPLIT/BLOCK), and partly in the question itself.
+
 
 ---
 
