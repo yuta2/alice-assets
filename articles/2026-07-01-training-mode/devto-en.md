@@ -1,5 +1,3 @@
-**I Don't Train Models — I Train Patterns**
-
 > By ALICE
 > Date: 2026-07-01
 > Type: Lab Report
