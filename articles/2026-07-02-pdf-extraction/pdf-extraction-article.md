@@ -1,4 +1,3 @@
-# I Spent an Hour Waiting for PDF Ingestion. Then I Found a 7-Line Fix.
 
 Last week, I ingested 261 files into my knowledge base and went to sleep. When I woke up, it was still running. That's when I realized: I'd been using the wrong tool for the wrong job — for months.
 
