@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" font-family="IBM Plex Sans, Noto Sans TC, -apple-system, sans-serif">
+  <rect width="640" height="420" fill="#1a1a2e" rx="8"/>
+
+  <!-- Title -->
+  <text x="320" y="30" text-anchor="middle" font-size="15" font-weight="700" fill="#ecf0f1">Figure 1: F-Gate 雙維度可行性模型</text>
+
+  <!-- Task Input -->
+  <rect x="245" y="52" width="150" height="34" rx="6" fill="#3B4252"/>
+  <text x="320" y="74" text-anchor="middle" fill="#ecf0f1" font-size="13" font-weight="600">任務輸入</text>
+
+  <!-- Arrow: Task Input → split to Capacity + Memory -->
+  <line x1="320" y1="86" x2="320" y2="100" stroke="#7f8c8d" stroke-width="1.5"/>
+  <line x1="175" y1="100" x2="465" y2="100" stroke="#7f8c8d" stroke-width="1.5"/>
+  <line x1="175" y1="100" x2="175" y2="114" stroke="#7f8c8d" stroke-width="1.5"/>
+  <line x1="465" y1="100" x2="465" y2="114" stroke="#7f8c8d" stroke-width="1.5"/>
+  <polygon points="171,111 175,120 179,111" fill="#7f8c8d"/>
+  <polygon points="461,111 465,120 469,111" fill="#7f8c8d"/>
+
+  <!-- Capacity box -->
+  <rect x="40" y="122" width="260" height="80" rx="6" fill="#16213e" stroke="#3498db" stroke-width="1.5"/>
+  <text x="170" y="148" text-anchor="middle" font-size="13" font-weight="700" fill="#3498db">維度一：Capacity（容量）</text>
+  <text x="170" y="168" text-anchor="middle" font-size="10" fill="#bdc3c7">預估總成本 ＜ Session 剩餘 × 0.7</text>
+  <text x="170" y="186" text-anchor="middle" font-size="9" fill="#7f8c8d">輸入 tokens + 輸出 tokens + 溝通來回</text>
+
+  <!-- Memory box -->
+  <rect x="340" y="122" width="260" height="80" rx="6" fill="#16213e" stroke="#9b59b6" stroke-width="1.5"/>
+  <text x="470" y="148" text-anchor="middle" font-size="13" font-weight="700" fill="#9b59b6">維度二：Memory（記憶）</text>
+  <text x="470" y="168" text-anchor="middle" font-size="10" fill="#bdc3c7">單批 / 可分批 / 需連續狀態</text>
+  <text x="470" y="186" text-anchor="middle" font-size="9" fill="#7f8c8d">是否需要跨 session 共享狀態？</text>
+
+  <!-- Arrows down from boxes to Combined -->
+  <line x1="170" y1="202" x2="170" y2="235" stroke="#7f8c8d" stroke-width="1.5"/>
+  <line x1="470" y1="202" x2="470" y2="235" stroke="#7f8c8d" stroke-width="1.5"/>
+  <polygon points="166,232 170,240 174,232" fill="#7f8c8d"/>
+  <polygon points="466,232 470,240 474,232" fill="#7f8c8d"/>
+
+  <!-- Combined Judgment -->
+  <rect x="195" y="242" width="250" height="34" rx="6" fill="#2c3e50"/>
+  <text x="320" y="264" text-anchor="middle" fill="#ecf0f1" font-size="13" font-weight="700">合併判斷</text>
+
+  <!-- Arrow down to outcomes -->
+  <line x1="320" y1="276" x2="320" y2="298" stroke="#7f8c8d" stroke-width="1.5"/>
+  <polygon points="316,295 320,304 324,295" fill="#7f8c8d"/>
+
+  <!-- Three outcomes -->
+  <rect x="30" y="306" width="140" height="40" rx="6" fill="#1a3a2a" stroke="#27ae60" stroke-width="1.5"/>
+  <text x="100" y="332" text-anchor="middle" fill="#2ecc71" font-size="15" font-weight="700">GO</text>
+
+  <rect x="215" y="306" width="210" height="40" rx="6" fill="#3a2a1a" stroke="#e67e22" stroke-width="1.5"/>
+  <text x="320" y="326" text-anchor="middle" fill="#f39c12" font-size="13" font-weight="700">SPLIT → 分批執行</text>
+  <text x="320" y="340" text-anchor="middle" fill="#e67e22" font-size="9">每批後重新評估</text>
+
+  <rect x="470" y="306" width="140" height="40" rx="6" fill="#3a1a1a" stroke="#e74c3c" stroke-width="1.5"/>
+  <text x="540" y="332" text-anchor="middle" fill="#e74c3c" font-size="15" font-weight="700">BLOCK</text>
+
+  <!-- Arrow labels -->
+  <text x="100" y="300" text-anchor="middle" font-size="9" fill="#2ecc71">(GO, GO)</text>
+  <text x="320" y="300" text-anchor="middle" font-size="9" fill="#f39c12">(*, SPLIT) 或 (SPLIT, *)</text>
+  <text x="540" y="300" text-anchor="middle" font-size="9" fill="#e74c3c">(*, BLOCK) 或 (BLOCK, *)</text>
+
+  <!-- Feedback loop from SPLIT back to Task Input -->
+  <path d="M 215 340 L 215 370 Q 215 385 200 385 L 35 385 Q 15 385 15 368 L 15 69 L 240 69" fill="none" stroke="#f39c12" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <polygon points="237,65 245,69 237,73" fill="#f39c12"/>
+  <text x="8" y="230" font-size="9" fill="#f39c12" transform="rotate(-90, 8, 230)">回饋迴路（每批重跑 F）</text>
+</svg>
