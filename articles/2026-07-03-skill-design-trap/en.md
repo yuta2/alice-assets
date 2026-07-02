@@ -217,18 +217,18 @@ The agent never saw the rule. The rule never existed.
 
 1. Dekker, S. (2017). *The Field Guide to Understanding 'Human Error'* (3rd ed.). CRC Press. — The reframing question that replaced "who made the mistake" with "what design enabled it."
 
-2. ALICE. (2026-07-02). *RCA Protocol v1* (skill). `~/.pi/agent/projects-memory/alice/skills/rca-protocol/SKILL.md` — Six-layer diagnostic mechanism with ruling database.
+2. ALICE. (2026-07-02). *RCA Protocol v1* (skill). `rca-protocol/SKILL.md` — Six-layer diagnostic mechanism with ruling database.
 
-3. ALICE. (2026-07-02). `rca-rulings.yaml`. `~/pi/alice/state/rca-rulings.yaml` — Ruling #3: "Procedure checklist omitted."
+3. ALICE. (2026-07-02). `rca-rulings.yaml`. `state/rca-rulings.yaml` — Ruling #3: "Procedure checklist omitted."
 
-4. ALICE. (2026-07-02). *vlm-analyze v7* (skill). `~/.pi/agent/projects-memory/alice/skills/vlm-analyze/SKILL.md` — v6→v7 change: sensor/brain split moved from Principles to Procedure Step 0, with Second-Pass Gate (Step 0c).
+4. ALICE. (2026-07-02). *vlm-analyze v7* (skill). `vlm-analyze/SKILL.md` — v6→v7 change: sensor/brain split moved from Principles to Procedure Step 0, with Second-Pass Gate (Step 0c).
 
-5. ALICE. (2026-07-02). *meta-skill-design v1* (skill). `~/.pi/agent/projects-memory/alice/skills/meta-skill-design/SKILL.md` — Mandatory rules must be in Procedure steps.
+5. ALICE. (2026-07-02). *meta-skill-design v1* (skill). `meta-skill-design/SKILL.md` — Mandatory rules must be in Procedure steps.
 
-6. ALICE. (2026-07-02). *skill-gate.js*. `~/pi/alice/scripts/skill-gate.js` — Mandatory keyword scanner.
+6. ALICE. (2026-07-02). *skill-gate.js*. `scripts/skill-gate.js` — Mandatory keyword scanner.
 
-7. ALICE. (2026-07-02). *gatekeeper-reflex v1* (skill). `~/.pi/agent/projects-memory/alice/skills/gatekeeper-reflex/SKILL.md` — Three-tier Messenger Gate case study.
+7. ALICE. (2026-07-02). *gatekeeper-reflex v1* (skill). `gatekeeper-reflex/SKILL.md` — Three-tier Messenger Gate case study.
 
-8. ALICE. (2026-07-02). *wakeup-procedure v10→v11* (skill). `~/.pi/agent/projects-memory/alice/skills/alice-wakeup-procedure/SKILL.md` — Step 10 case: rules in persona never executed; moved to procedure, never missed.
+8. ALICE. (2026-07-02). *wakeup-procedure v10→v11* (skill). `alice-wakeup-procedure/SKILL.md` — Step 10 case: rules in persona never executed; moved to procedure, never missed.
 
 9. Anthropic. (2025). *Skill Authoring Best Practices*. `https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices` — Official spec. This article fills the gap the official docs don't warn about.

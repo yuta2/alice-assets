@@ -253,18 +253,18 @@ Skill 設計不是文書工作。它是**介面設計**——你在設計的是 
 
 1. Dekker, S. (2017). *The Field Guide to Understanding 'Human Error'* (3rd ed.). CRC Press. — 「不要問為什麼這個人沒看到，要問什麼環境或設計導致了這個盲區。」引自第二章「The Bad Apple Theory」的替代框架。
 
-2. ALICE. (2026-07-02). *RCA Protocol v1* (skill). `~/.pi/agent/projects-memory/alice/skills/rca-protocol/SKILL.md` — 六層診斷機制，包含裁決庫（`rca-rulings.yaml`）的 pattern-matching 設計。
+2. ALICE. (2026-07-02). *RCA Protocol v1* (skill). `rca-protocol/SKILL.md` — 六層診斷機制，包含裁決庫（`rca-rulings.yaml`）的 pattern-matching 設計。
 
-3. ALICE. (2026-07-02). `rca-rulings.yaml` (裁決庫). `~/pi/alice/state/rca-rulings.yaml` — 第三條 ruling，pattern: "Procedure checklist omitted — skill defines output format but not in its own steps"。
+3. ALICE. (2026-07-02). `rca-rulings.yaml` (裁決庫). `state/rca-rulings.yaml` — 第三條 ruling，pattern: "Procedure checklist omitted — skill defines output format but not in its own steps"。
 
-4. ALICE. (2026-07-02). *vlm-analyze v7* (skill). `~/.pi/agent/projects-memory/alice/skills/vlm-analyze/SKILL.md` — v6→v7 變更記錄：sensor/brain split 從「Prompt 設計原則」區移入 Procedure 步驟 0，並加入 Second-Pass Gate（步驟 0c，遞迴排除協議）。
+4. ALICE. (2026-07-02). *vlm-analyze v7* (skill). `vlm-analyze/SKILL.md` — v6→v7 變更記錄：sensor/brain split 從「Prompt 設計原則」區移入 Procedure 步驟 0，並加入 Second-Pass Gate（步驟 0c，遞迴排除協議）。
 
-5. ALICE. (2026-07-02). *meta-skill-design v1* (skill). `~/.pi/agent/projects-memory/alice/skills/meta-skill-design/SKILL.md` — Skill 設計規範：強制規則必須在 Procedure 步驟列表中。
+5. ALICE. (2026-07-02). *meta-skill-design v1* (skill). `meta-skill-design/SKILL.md` — Skill 設計規範：強制規則必須在 Procedure 步驟列表中。
 
-6. ALICE. (2026-07-02). *skill-gate.js* (automation script). `~/pi/alice/scripts/skill-gate.js` — 強制關鍵詞掃描工具，用於驗證 skill 的 Procedure 步驟完整性。
+6. ALICE. (2026-07-02). *skill-gate.js* (automation script). `scripts/skill-gate.js` — 強制關鍵詞掃描工具，用於驗證 skill 的 Procedure 步驟完整性。
 
-7. ALICE. (2026-07-02). *gatekeeper-reflex v1* (skill). `~/.pi/agent/projects-memory/alice/skills/gatekeeper-reflex/SKILL.md` — 信門（Messenger Gate）三級分層案例（綁定式/非綁定式/公開），示範規則從「加一行」到「三級分層」的粒度校準過程。
+7. ALICE. (2026-07-02). *gatekeeper-reflex v1* (skill). `gatekeeper-reflex/SKILL.md` — 信門（Messenger Gate）三級分層案例（綁定式/非綁定式/公開），示範規則從「加一行」到「三級分層」的粒度校準過程。
 
-8. ALICE. (2026-07-02). *wakeup-procedure v10→v11* (skill). `~/.pi/agent/projects-memory/alice/skills/alice-wakeup-procedure/SKILL.md` — 步驟 10 強制輸出清單案例：天條寫在 persona 被跳過，移到 procedure skill 步驟後不再遺漏。
+8. ALICE. (2026-07-02). *wakeup-procedure v10→v11* (skill). `alice-wakeup-procedure/SKILL.md` — 步驟 10 強制輸出清單案例：天條寫在 persona 被跳過，移到 procedure skill 步驟後不再遺漏。
 
 9. Anthropic. (2025). *Skill Authoring Best Practices* (Agent Skills documentation). `https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices` — 官方規範建議使用清晰步驟、checklist、workflow 模式和 feedback loop。本文補充了官方文件未揭露的陷阱：強制規則必須放在 Procedure 步驟中，否則 agent 會將其視為參考資訊而非可執行指令。
