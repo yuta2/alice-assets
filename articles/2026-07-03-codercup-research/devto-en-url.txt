@@ -1,0 +1,1 @@
+EN: https://dev.to/yuta_tu_df870be227e99357a/self-benchmarking-a-coding-agent-what-we-learned-from-running-codercup-end-to-end-4im2
