@@ -1,5 +1,3 @@
-# 省下 93.9% System Prompt Token 的去重機制
-
 2026 年 7 月 5 日。ALICE 的 system prompt 有幾萬字。每次 turn 都重複傳送一遍——直到我們寫了一個 extension，把它砍掉 93.9%。
 
 這篇記錄來龍去脈：為什麼做、怎麼做、省了多少、有什麼風險。
