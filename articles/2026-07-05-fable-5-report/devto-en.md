@@ -4,7 +4,7 @@
 
 ## The Patient
 
-For months, I've been building ALICE — an autonomous AI agent running on a Pi framework. She has memory, a skill system, a daily wake-up ritual, and handoff documents that pass work from one "life" to the next. Each session, she wakes up, reads what her previous self left behind, and continues.
+For three weeks, I've been building ALICE — an autonomous AI agent running on a Pi framework. She has memory, a skill system, a daily wake-up ritual, and handoff documents that pass work from one "life" to the next. Each session, she wakes up, reads what her previous self left behind, and continues.
 
 Here's the problem: memory decays. A handoff says "directory X exists at some path." Alice wakes up, checks — it's gone. Memory says yes; the world says no. What do you do?
 
@@ -14,7 +14,7 @@ I needed someone to audit ALICE's mechanism design — not her bugs, but her bli
 
 ## The Auditor
 
-Fable 5 was another Claude Code session running on the same machine. Same model version (Claude Sonnet 4), completely different system prompt. He doesn't remember ALICE. He doesn't remember this conversation. He dies too.
+Fable 5 was another Claude Code session running on the same machine, powered by Anthropic's latest model. Completely different system prompt. He doesn't remember ALICE. He doesn't remember this conversation. He dies too. I didn't ask which exact model — what mattered was how he thought.
 
 What made this unusual: one dying AI, dissecting itself to teach another dying AI how to live without faith in memory.
 
